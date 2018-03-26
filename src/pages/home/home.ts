@@ -11,4 +11,15 @@ export class HomePage {
 
   }
 
+  promptForInstall(){
+    if(window['defferedPromptToInstall']) {
+      window['defferedPromptToInstall'].prompt();
+
+      window['defferedPromptToInstall'].userChoice.then(function(choice){
+        console.log(choice.outcome);
+      })
+      window['defferedPromptToInstall'] = null;
+    }
+  }
+
 }

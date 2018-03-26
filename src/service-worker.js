@@ -29,3 +29,15 @@ self.toolbox.router.any('/*', self.toolbox.fastest);
 // for any other requests go to the network, cache,
 // and then only use that cached resource if your user goes offline
 self.toolbox.router.default = self.toolbox.networkFirst;
+
+self.addEventListener('install', function(event){
+  console.log("Installed", event);
+})
+self.addEventListener('activate', function(event){
+  console.log("Activated", event);
+  return self.clients.claim();
+})
+
+self.addEventListener('fetch', function(event){
+  console.log("Fetched", event);
+})
